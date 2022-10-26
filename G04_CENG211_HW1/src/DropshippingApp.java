@@ -7,6 +7,8 @@ public class DropshippingApp {
 		//String[][] array = FileIO.readFile("Customers.csv");
 		//System.out.println(Arrays.deepToString(array).replace("], ", "]\n"));
 		//System.out.println(array[1][1]);
+		//System.out.println(array.length);
+		//System.out.println(array[40].length);
 		
 		
 		//String[][] array1 = FileIO.readFile("S1_Products.csv");

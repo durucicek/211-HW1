@@ -13,12 +13,17 @@ public class Customer {
 		this.country = country;
 		this.address = address;
 	}
-	public static Customer[] customerArrayMaker(String[][] array) {
-		Customer[] costumerArray = new Customer[array.length];
+	
+	//Takes an array of customer information
+	//Create an array of customers, length is equal to number of customers
+	//Creates customers and appends to the array
+
+	public static Customer[] makeCustomerArray(String[][] array) {
+		Customer[] customerArray = new Customer[array.length];
 		for (int i = 1; i < array.length; i++) {
-			costumerArray[i] = new Customer(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4]);
+			customerArray[i] = new Customer(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4]);
 		}
-		return costumerArray;
+		return customerArray;
 	}
 	
 	

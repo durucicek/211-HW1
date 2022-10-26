@@ -31,23 +31,24 @@ public class Product {
 	}
 	
 	
-	public static Product[] productArrayMaker(String[][] array) {
+	//Takes an array of product information
+	//Create an array of products, length is equal to number of products
+	//Creates products and appends to the array 
+	
+	public static Product[] makeProductArray(String[][] array) {
 		Product[] productArray = new Product[array.length];
 		for (int i = 1; i < array.length; i++) {
-			if(array[i][2]!= null) {
 				productArray[i] = new Product(array[i][0],array[i][1],array[i][2],array[i][3],array[i][4]);
-			}
 		}
 		return productArray;
 	}
 	
+	//SalesPrice = price + (rate/5.0 * 100) * number of reviews
 	
-	public static double[] calcSalesPrice(Product[] productArray) {
+	public static double[] calcualteSalesPrice(Product[] productArray) {
 		double[] salesPrice = new double[productArray.length];
 		for (int i = 1; i < productArray.length; i++) {
-			if(productArray[i]!= null) {
 				salesPrice[i] = productArray[i].getPrice() + (productArray[i].getRate()/5 * 100)* productArray[i].getNumberOfReviews();
-			}
 		}
 		return salesPrice;
 	}
