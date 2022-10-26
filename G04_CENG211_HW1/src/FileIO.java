@@ -21,15 +21,38 @@ public class FileIO {
 				array[count] = str.split(",");
 				count++;
 			}
+		
 			reader.close();
+			array = fitArray(array);
 		} 
 		
 		catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		return array;
 
+	}
+	
+	//Find the length of the array with not-null elements
+	//Make a new array with no null elements, copy the original
+	public static String[][] fitArray(String[][] firstArray){
+		
+		int countRow = 0;
+		while(firstArray[countRow][0] != null) {
+			countRow++;
+		}
+		
+		int countCollumn= firstArray[0].length;
+		String[][] newArray = new String[countRow][countCollumn];
+		
+		for(int i=0; i < countRow; i++) {
+			newArray[i] = firstArray[i] ;
+		}
+			
+		return newArray;
+		
 	}
 
 }
