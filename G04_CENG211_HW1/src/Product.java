@@ -1,4 +1,3 @@
-import java.io.IOException;;
 
 public class Product {
 	String ID;
@@ -18,14 +17,19 @@ public class Product {
 		return ID;
 	}
 	
+	//copyleyip returnle
+
 	public int getPrice() {
 		return price;
 	}
 	
+	//copyleyip returnle
 	public double getRate() {
 		return rate;
 	}
 	
+	//copyleyip returnle
+
 	public int getNumberOfReviews() {
 		return numberOfReviews;
 	}

@@ -1,4 +1,3 @@
-import java.io.IOException;
 
 public class Sales {
 	String ID;
@@ -30,26 +29,27 @@ public class Sales {
 		return product;
 	}
 	
+	//copyleyip returnle
 	public double getSalesPrice() {
 		return salesPrice;
 	}
 	
-	public static Sales[] setSalesPriceArray (Product[] productArray, Sales[] salesArray, double[] costArray) {
+	
+	public static Sales[] setSalesPriceArray (Product[] productArray, Sales[] salesArray, double[] salesPriceArray) {
 		for(int i = 1; i < salesArray.length; i++) {
-			if(salesArray[i]!=null) {
-				String salesID = salesArray[i].getProduct();
-				System.out.println(salesID);
-				for(int x = 1; x < productArray.length; x++) {
-					if(productArray[x]!=null) {
-						String productID = productArray[x].getID();
-						if(salesID != null && productID != null && salesID.equals(productID)) {
-							salesArray[i].setSalesPrice(costArray[x]);
-							System.out.println(salesArray[i].getSalesPrice());
-						}
+			String salesProductID = salesArray[i].getProduct();
+			//System.out.println(salesProductID);
+			for(int x = 1; x < productArray.length; x++) {
+				if(productArray[x]!=null) {
+					String productID = productArray[x].getID();
+					if(salesProductID != null && productID != null && salesProductID.equals(productID)) {
+						salesArray[i].setSalesPrice(salesPriceArray[x]);
+						System.out.println(salesArray[i].getSalesPrice());
 					}
 				}
 			}
 		}
+		
 		return salesArray;
 	}
 	

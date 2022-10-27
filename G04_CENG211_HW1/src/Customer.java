@@ -1,5 +1,6 @@
 
 public class Customer {
+	//privatelancak
 	String ID;
 	String name;
 	String email;
