@@ -17,14 +17,6 @@ public class Sales {
 		this.salesPrice = salesPrice;
 	}
 
-	public static Sales[] salesArrayMaker(String[][] array) {
-		Sales[] salesArray = new Sales[array.length];
-		for (int i = 1; i < array.length; i++) {
-			salesArray[i] = new Sales(array[i][0],array[i][1],array[i][2],array[i][3]);
-		}
-		return salesArray;
-	}
-	
 	public String getProduct() {
 		return product;
 	}
@@ -34,8 +26,26 @@ public class Sales {
 		return salesPrice;
 	}
 	
+	public static Sales[] makeSalesArray(String[][] array) {
+		Sales[] salesArray = new Sales[array.length];
+		for (int i = 1; i < array.length; i++) {
+			salesArray[i] = new Sales(array[i][0],array[i][1],array[i][2],array[i][3]);
+		}
+		return salesArray;
+	}
+
 	
-	public static Sales[] setSalesPriceArray (Product[] productArray, Sales[] salesArray, double[] salesPriceArray) {
+	//SalesPrice = price + (rate/5.0 * 100) * number of reviews
+	public static double[] calcualteSalesPrice(Product[] productArray) {
+		double[] salesPrice = new double[productArray.length];
+		for (int i = 1; i < productArray.length; i++) {
+				salesPrice[i] = productArray[i].getPrice() + (productArray[i].getRate()/5 * 100)* productArray[i].getNumberOfReviews();
+		}
+		return salesPrice;
+	}
+	
+		
+	public static Sales[] addSalesPriceToArray (Product[] productArray, Sales[] salesArray, double[] salesPriceArray) {
 		for(int i = 1; i < salesArray.length; i++) {
 			String salesProductID = salesArray[i].getProduct();
 			//System.out.println(salesProductID);
@@ -44,7 +54,7 @@ public class Sales {
 					String productID = productArray[x].getID();
 					if(salesProductID != null && productID != null && salesProductID.equals(productID)) {
 						salesArray[i].setSalesPrice(salesPriceArray[x]);
-						System.out.println(salesArray[i].getSalesPrice());
+						//System.out.println(salesArray[i].getSalesPrice());
 					}
 				}
 			}

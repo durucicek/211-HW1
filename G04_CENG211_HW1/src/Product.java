@@ -47,15 +47,6 @@ public class Product {
 		return productArray;
 	}
 	
-	//SalesPrice = price + (rate/5.0 * 100) * number of reviews
-	
-	public static double[] calcualteSalesPrice(Product[] productArray) {
-		double[] salesPrice = new double[productArray.length];
-		for (int i = 1; i < productArray.length; i++) {
-				salesPrice[i] = productArray[i].getPrice() + (productArray[i].getRate()/5 * 100)* productArray[i].getNumberOfReviews();
-		}
-		return salesPrice;
-	}
 	
 
 
