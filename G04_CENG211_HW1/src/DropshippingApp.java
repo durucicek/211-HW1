@@ -18,7 +18,13 @@ public class DropshippingApp {
 		//double[] costArray = Product.calcSalesPrice(productArray);
 		//Sales[] salesArrayEnd = Sales.setSalesPriceArray(productArray, salesArray, costArray);
 		
-		
+		 SalesQuery query = new SalesQuery();
+		 Sales[][] a = query.sales.getSales();
+		 
+		 //00 null döndürüyo imdat
+		 System.out.println(a[0][0]);
+		 
+		 System.out.println(a[0][2]);
 	}
 
 }
