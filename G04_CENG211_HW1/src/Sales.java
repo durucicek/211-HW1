@@ -5,6 +5,7 @@ public class Sales {
 	String product;
 	String salesDate;
 	double salesPrice;
+	double profit;
 	
 	public Sales(String ID, String costumer, String product, String salesDate) {
 		this.ID = ID;
@@ -64,5 +65,14 @@ public class Sales {
 	}
 	
 
-	
+	/*
+	public static double[] calculateProfit(Product[] productArray) {
+		double[] profit = new double[productArray.length];
+		for (int i = 1; i < productArray.length; i++) {
+			profit[i] = makeSalesArray(null)[i].getSalesPrice() - productArray[i].getPrice();
+			}
+		return profit;
+	}
+	*/
+
 }

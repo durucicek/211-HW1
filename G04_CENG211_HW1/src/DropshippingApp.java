@@ -22,9 +22,9 @@ public class DropshippingApp {
 		 Sales[][] a = query.sales.getSales();
 		 
 		 //00 null döndürüyo imdat
-		 System.out.println(a[0][0]);
+		 //System.out.println(a[0][0]);
 		 
-		 System.out.println(a[0][2]);
+		 //System.out.println(a[0][2]);
 	}
 
 }
