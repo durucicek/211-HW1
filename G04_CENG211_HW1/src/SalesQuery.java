@@ -43,6 +43,7 @@ public class SalesQuery {
 	    
 	   
 	    System.out.println();
+	    System.out.println();
 	    
 	    
 	    
