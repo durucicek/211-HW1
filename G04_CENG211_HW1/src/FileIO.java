@@ -107,7 +107,7 @@ public class FileIO {
 	}
 	
 	public static Sales[] getSalesforSuppilerTwo(Product[] s2_productArray) throws IOException {
-		String[][] array = readFile("S1_Sales.csv");
+		String[][] array = readFile("S2_Sales.csv");
 		Sales[] s2_salesArray = Sales.makeSalesArray(array);
 		double[] salesPrices = Sales.calcualteSalesPrice(s2_productArray);
 		s2_salesArray = Sales.addSalesPriceToArray(s2_productArray,s2_salesArray,salesPrices);

@@ -5,7 +5,7 @@ public class Sales {
 	String product;
 	String salesDate;
 	double salesPrice;
-	double profit;
+	//double profit;
 	
 	public Sales(String ID, String costumer, String product, String salesDate) {
 		this.ID = ID;
@@ -26,6 +26,8 @@ public class Sales {
 	public double getSalesPrice() {
 		return salesPrice;
 	}
+	
+	//TODO PRINT DATA EKLENCEK
 	
 	public static Sales[] makeSalesArray(String[][] array) {
 		Sales[] salesArray = new Sales[array.length];
