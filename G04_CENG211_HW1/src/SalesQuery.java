@@ -2,7 +2,7 @@ import java.io.IOException;
 
 public class SalesQuery {
 	Customer[] customers;
-	Supplier supplier1;
+	static Supplier supplier1;
 	Supplier supplier2;
 	Supplier supplier3;
 	static SalesManagement sales;
@@ -28,17 +28,17 @@ public class SalesQuery {
 		
 	// max product price 
 	public static void getMostExpensiveProduct() {
-	Sales maxSalesPrice = sales.getSales()[0][0];				//indexte problem olabilir
+	Sales maxSalesPrice = sales.getSales()[0][1];				//indexte problem olabilir
     for(int i=2; i<sales.getSales()[0].length; i++) {
         if(sales.getSales()[0][i].getSalesPrice()>=maxSalesPrice.getSalesPrice()) 
             maxSalesPrice=sales.getSales()[0][i];
     }
     
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].ID);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].title);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].rate);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].numberOfReviews);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].price);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxSalesPrice.product.substring(1))].ID);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxSalesPrice.product.substring(1))].title);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxSalesPrice.product.substring(1))].rate);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxSalesPrice.product.substring(1))].numberOfReviews);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxSalesPrice.product.substring(1))].price);
     System.out.println("----->" + " with sales price: " + maxSalesPrice.salesPrice);
     // 
     
@@ -50,21 +50,21 @@ public class SalesQuery {
 	    
     // max profit
 	public static void getMostProfitableProduct() {
-    Sales maxProfit = sales.getSales()[0][0];    
+    Sales maxProfit = sales.getSales()[0][1];    
     for(int m=1; m<sales.getSales()[0].length; m++) {
-    	if(sales.getSales()[0][m].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][m].getProduct().substring(1))].getPrice() > 
-    					maxProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(maxProfit.getProduct().substring(1))].getPrice())
+    	if(sales.getSales()[0][m].getSalesPrice() - supplier1.getProducts()[Integer.parseInt(sales.getSales()[0][m].getProduct().substring(1))].getPrice() > 
+    					maxProfit.getSalesPrice() - supplier1.getProducts()[Integer.parseInt(maxProfit.getProduct().substring(1))].getPrice())
     		maxProfit = sales.getSales()[0][m];
     	
 
     }
    
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].ID);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].title);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].rate);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].numberOfReviews);
-    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].price);
-    System.out.println("----->" + " most profit: " + (maxProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].price));
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].ID);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].title);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].rate);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].numberOfReviews);
+    System.out.println(supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].price);
+    System.out.println("----->" + " most profit: " + (maxProfit.getSalesPrice() - supplier1.getProducts()[Integer.parseInt(maxProfit.product.substring(1))].price));
 	//
 
     
@@ -75,19 +75,19 @@ public class SalesQuery {
 	public static void getLeastProfitableProduct() {
 	    Sales leastProfit = sales.getSales()[0][1];			
 	    for(int n=1; n<sales.getSales()[0].length; n++) {
-	    	if(sales.getSales()[0][n].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][n].getProduct().substring(1))].getPrice() < 
-	    				leastProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()) {
+	    	if(sales.getSales()[0][n].getSalesPrice() - supplier1.getProducts()[Integer.parseInt(sales.getSales()[0][n].getProduct().substring(1))].getPrice() < 
+	    				leastProfit.getSalesPrice() - supplier1.getProducts()[Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()) {
 	    		leastProfit = sales.getSales()[0][n];
 	    	}
 	    }
 	   
    
-	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].ID);
-	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].title);
-	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].rate);
-	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].numberOfReviews);
-	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].price);
-	    System.out.println("----->" + " least profit: " + (leastProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()));
+	    System.out.println(supplier1.getProducts()[Integer.parseInt(leastProfit.product.substring(1))].ID);
+	    System.out.println(supplier1.getProducts()[Integer.parseInt(leastProfit.product.substring(1))].title);
+	    System.out.println(supplier1.getProducts()[Integer.parseInt(leastProfit.product.substring(1))].rate);
+	    System.out.println(supplier1.getProducts()[Integer.parseInt(leastProfit.product.substring(1))].numberOfReviews);
+	    System.out.println(supplier1.getProducts()[Integer.parseInt(leastProfit.product.substring(1))].price);
+	    System.out.println("----->" + " least profit: " + (leastProfit.getSalesPrice() - supplier1.getProducts()[Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()));
     //
 
 
@@ -100,7 +100,7 @@ public class SalesQuery {
 	public static void getTotalProfit() {
     long total_profit = 0;
     for(int k=1; k<sales.getSales()[0].length; k++) {
-    	total_profit += sales.getSales()[0][k].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][k].getProduct().substring(1))].getPrice();
+    	total_profit += sales.getSales()[0][k].getSalesPrice() - supplier1.getProducts()[Integer.parseInt(sales.getSales()[0][k].getProduct().substring(1))].getPrice();
     }
     
     System.out.println("-----> total profit: " + total_profit);
