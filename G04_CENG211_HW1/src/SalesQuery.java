@@ -5,7 +5,7 @@ public class SalesQuery {
 	Supplier supplier1;
 	Supplier supplier2;
 	Supplier supplier3;
-	SalesManagement sales;
+	static SalesManagement sales;
 	
 	
 	
@@ -24,81 +24,87 @@ public class SalesQuery {
 		Sales[] s3_salesArray = FileIO.getSalesforSuppilerOne(s3_productArray);
 		sales = new SalesManagement(s1_salesArray, s2_salesArray, s3_salesArray);
 	
-	    
+	}
 		
-		// max product price 
-		Sales maxSalesPrice = s1_salesArray[1];				//indexte problem olabilir
-	    for(int i=2; i<s1_salesArray.length; i++) {
-	        if(s1_salesArray[i].getSalesPrice()>=maxSalesPrice.getSalesPrice()) 
-	            maxSalesPrice=s1_salesArray[i];
-	    }
+	// max product price 
+	public static void getMostExpensiveProduct() {
+	Sales maxSalesPrice = sales.getSales()[0][0];				//indexte problem olabilir
+    for(int i=2; i<sales.getSales()[0].length; i++) {
+        if(sales.getSales()[0][i].getSalesPrice()>=maxSalesPrice.getSalesPrice()) 
+            maxSalesPrice=sales.getSales()[0][i];
+    }
+    
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].ID);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].title);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].rate);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].numberOfReviews);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxSalesPrice.product.substring(1))].price);
+    System.out.println("----->" + " with sales price: " + maxSalesPrice.salesPrice);
+    // 
+    
+   
+    System.out.println();
+    System.out.println();
+    
+	}
 	    
-	    System.out.println(s1_productArray[Integer.parseInt(maxSalesPrice.product.substring(1))].ID);
-	    System.out.println(s1_productArray[Integer.parseInt(maxSalesPrice.product.substring(1))].title);
-	    System.out.println(s1_productArray[Integer.parseInt(maxSalesPrice.product.substring(1))].rate);
-	    System.out.println(s1_productArray[Integer.parseInt(maxSalesPrice.product.substring(1))].numberOfReviews);
-	    System.out.println(s1_productArray[Integer.parseInt(maxSalesPrice.product.substring(1))].price);
-	    System.out.println("----->" + " with sales price: " + maxSalesPrice.salesPrice);
-	    // 
-	    
-	   
-	    System.out.println();
-	    System.out.println();
-	    
-	    
-	    
-	    // max profit
-	    Sales maxProfit = s1_salesArray[1];    
-	    for(int m=1; m<s1_salesArray.length; m++) {
-	    	if(s1_salesArray[m].getSalesPrice() - s1_productArray[Integer.parseInt(s1_salesArray[m].getProduct().substring(1))].getPrice() > 
-	    					maxProfit.getSalesPrice() - s1_productArray[Integer.parseInt(maxProfit.getProduct().substring(1))].getPrice())
-	    		maxProfit = s1_salesArray[m];
-	    	
+    // max profit
+	public static void getMostProfitableProduct() {
+    Sales maxProfit = sales.getSales()[0][0];    
+    for(int m=1; m<sales.getSales()[0].length; m++) {
+    	if(sales.getSales()[0][m].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][m].getProduct().substring(1))].getPrice() > 
+    					maxProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(maxProfit.getProduct().substring(1))].getPrice())
+    		maxProfit = sales.getSales()[0][m];
+    	
 
-	    }
-	   
-	    System.out.println(s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].ID);
-	    System.out.println(s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].title);
-	    System.out.println(s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].rate);
-	    System.out.println(s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].numberOfReviews);
-	    System.out.println(s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].price);
-	    System.out.println("----->" + " most profit: " + (maxProfit.getSalesPrice() - s1_productArray[Integer.parseInt(maxProfit.product.substring(1))].price));
-		//
-	
-	    
-	    System.out.println();
-	    
-	    
-	    // least profit product
-	    Sales leastProfit = s1_salesArray[1];			
-	    for(int n=1; n<s1_salesArray.length; n++) {
-	    	if(s1_salesArray[n].getSalesPrice() - s1_productArray[Integer.parseInt(s1_salesArray[n].getProduct().substring(1))].getPrice() < 
-	    				leastProfit.getSalesPrice() - s1_productArray[Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()) {
-	    		leastProfit = s1_salesArray[n];
+    }
+   
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].ID);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].title);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].rate);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].numberOfReviews);
+    System.out.println(sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].price);
+    System.out.println("----->" + " most profit: " + (maxProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(maxProfit.product.substring(1))].price));
+	//
+
+    
+    System.out.println();
+	}
+    
+    // least profit product
+	public static void getLeastProfitableProduct() {
+	    Sales leastProfit = sales.getSales()[0][1];			
+	    for(int n=1; n<sales.getSales()[0].length; n++) {
+	    	if(sales.getSales()[0][n].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][n].getProduct().substring(1))].getPrice() < 
+	    				leastProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()) {
+	    		leastProfit = sales.getSales()[0][n];
 	    	}
 	    }
 	   
    
-	    System.out.println(s1_productArray[Integer.parseInt(leastProfit.product.substring(1))].ID);
-	    System.out.println(s1_productArray[Integer.parseInt(leastProfit.product.substring(1))].title);
-	    System.out.println(s1_productArray[Integer.parseInt(leastProfit.product.substring(1))].rate);
-	    System.out.println(s1_productArray[Integer.parseInt(leastProfit.product.substring(1))].numberOfReviews);
-	    System.out.println(s1_productArray[Integer.parseInt(leastProfit.product.substring(1))].price);
-	    System.out.println("----->" + " least profit: " + (leastProfit.getSalesPrice() - s1_productArray[Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()));
-	    //
+	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].ID);
+	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].title);
+	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].rate);
+	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].numberOfReviews);
+	    System.out.println(sales.getSales()[0][Integer.parseInt(leastProfit.product.substring(1))].price);
+	    System.out.println("----->" + " least profit: " + (leastProfit.getSalesPrice() - sales.getSales()[0][Integer.parseInt(leastProfit.getProduct().substring(1))].getPrice()));
+    //
+
+
+    System.out.println();
+    
+	}
 	
 	
-	    System.out.println();
-	    
-	    
-	    // total profit    
-	    long total_profit = 0;
-	    for(int k=1; k<s1_salesArray.length; k++) {
-	    	total_profit += s1_salesArray[k].getSalesPrice() - s1_productArray[Integer.parseInt(s1_salesArray[k].getProduct().substring(1))].getPrice();
-	    }
-	    
-	    System.out.println("-----> total profit: " + total_profit);
-	    //
+    // total profit    
+	public static void getTotalProfit() {
+    long total_profit = 0;
+    for(int k=1; k<sales.getSales()[0].length; k++) {
+    	total_profit += sales.getSales()[0][k].getSalesPrice() - sales.getSales()[0][Integer.parseInt(sales.getSales()[0][k].getProduct().substring(1))].getPrice();
+    }
+    
+    System.out.println("-----> total profit: " + total_profit);
+    //
 	
 	    
 	}

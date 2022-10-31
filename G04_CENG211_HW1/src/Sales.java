@@ -51,15 +51,14 @@ public class Sales {
 			String salesProductID = salesArray[i].getProduct();
 			//System.out.println(salesProductID);
 			for(int x = 1; x < productArray.length; x++) {
-				if(productArray[x]!=null) {
 					String productID = productArray[x].getID();
-					if(salesProductID != null && productID != null && salesProductID.equals(productID)) {
+					if(salesProductID.equals(productID)) {
 						salesArray[i].setSalesPrice(salesPriceArray[x]);
 						//System.out.println(salesArray[i].getSalesPrice());
 					}
 				}
 			}
-		}
+		
 		
 		return salesArray;
 	}
